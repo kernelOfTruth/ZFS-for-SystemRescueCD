@@ -31,7 +31,8 @@ HOWTO
 - when using SystemRescueCD 4.3.0 on an USB stick - everything needed to do is 
 - follow the instructions from http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick
 - have the usbstick mounted (mount -t vfat /dev/sdf1 /mnt/usbstick)
-- then copy over the zfs-core and zfs-kmod SRM files to the root of the usbstick(zfs-core-3.10.45-std430-amd64.srm, zfs-core-3.14.9-alt430-amd64.srm, zfs-kmod-3.10.45-std430-amd64.srm, zfs-kmod-3.14.9-alt430-amd64.srm)
+- then copy over the zfs-core and zfs-kmod SRM files to the root of the usbstick(zfs-core-3.10.45-std430-amd64.srm, 
+  zfs-core-3.14.9-alt430-amd64.srm, zfs-kmod-3.10.45-std430-amd64.srm, zfs-kmod-3.14.9-alt430-amd64.srm)
 - make sure that the usbstick is bootable, otherwise rewrite syslinux to the device (e.g. syslinux /dev/sdf1 && sync)
 - ...
 - during boot choose the 64bit versions (both default and alternative are supported), pick your keymap configuration
@@ -44,9 +45,6 @@ HOWTO
 
 LICENSES, COPYRIGHT
 -----------------------------------------------------------------------------------------------------------------------
-Below is the README of Bliss Initramfs 1.8.1, which was referenced in
-http://www.funtoo.org/Creating_System_Rescue_CD_ZFS_Modules and
-was downloaded from https://github.com/fearedbliss/bliss-initramfs
 
 SPL:
 ----------------------------------------------------------------------
@@ -56,6 +54,10 @@ ZFS:
 ----------------------------------------------------------------------
 https://github.com/zfsonlinux/zfs/blob/master/COPYRIGHT
 
+
+Below is the README of Bliss Initramfs 1.8.1, which was referenced in
+http://www.funtoo.org/Creating_System_Rescue_CD_ZFS_Modules and
+was downloaded from https://github.com/fearedbliss/bliss-initramfs
 
 Bliss Initramfs:
 ----------------------------------------------------------------------
