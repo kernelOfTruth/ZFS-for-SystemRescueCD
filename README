@@ -1,5 +1,5 @@
 HOWTO
-
+------------------------------------------------------------------
 - when using SystemRescueCD 4.3.0 on an USB stick - everything needed to do is 
 - follow the instructions from http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick
 - have the usbstick mounted (mount -t vfat /dev/sdf1 /mnt/usbstick)
@@ -13,6 +13,8 @@ HOWTO
 - Enjoy !
 
 
+CONTENT
+------------------------------------------------------------------
 This repository contains the following things:
 
 - Bliss Initramfs Creator - v1.8.1
@@ -21,6 +23,8 @@ This repository contains the following things:
 
 
 
+LICENSES
+------------------------------------------------------------------
 Below is the README of Bliss Initramfs 1.8.1, which was referenced in
 http://www.funtoo.org/Creating_System_Rescue_CD_ZFS_Modules and
 was downloaded from https://github.com/fearedbliss/bliss-initramfs
