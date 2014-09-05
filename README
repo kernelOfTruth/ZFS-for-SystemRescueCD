@@ -19,9 +19,10 @@ CONTENT
 -----------------------------------------------------------------------------------------------------------------------
 This repository contains the following things:
 
-- Bliss Initramfs Creator - v1.8.1
-- (slightly modified to succeed build) Kernel Configuration of SysRescCD 4.3.0 kernels
+- Bliss Initramfs Creator - v1.8.1 (bliss-initramfs/1.8.1)
+- Kernel Configuration of SysRescCD 4.3.0 kernels (slightly modified to succeed build; kernel-config/config-amd64-*)
 - up-to-date ZFS SRM modules for SysRescCD 4.3.0 (spl, zfs-kmod, zfs), as of September 4th to 5th (CEST) 2014
+  (SRM-modules/4.3.0)
 
 
 

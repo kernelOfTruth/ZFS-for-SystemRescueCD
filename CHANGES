@@ -1,3 +1,17 @@
+v4
+----------------------------------------
+folder structure (SRM-modules, bliss-initramfs, kernel-config)
+some additions to README
+adding temporary files to gitignore filter
+
+v3
+----------------------------------------
+further clarifying README, adding DISCLAIMER
+
+v2
+----------------------------------------
+clarifying README
+
 v1
 ----------------------------------------
 Initial commit
