@@ -1,0 +1,91 @@
+HOWTO
+
+- when using SystemRescueCD 4.3.0 on an USB stick - everything needed to do is 
+- follow the instructions from http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick
+- have the usbstick mounted (mount -t vfat /dev/sdf1 /mnt/usbstick)
+- then copy over the zfs-core and zfs-kmod SRM files to the root of the usbstick(zfs-core-3.10.45-std430-amd64.srm, zfs-core-3.14.9-alt430-amd64.srm, zfs-kmod-3.10.45-std430-amd64.srm, zfs-kmod-3.14.9-alt430-amd64.srm)
+- make sure that the usbstick is bootable, otherwise rewrite syslinux to the device (e.g. syslinux /dev/sdf1 && sync)
+- ...
+- during boot choose the 64bit versions (both default and alternative are supported), pick your keymap configuration
+- after boot has finished run 'depmod'
+- then a simple 'modprobe zfs' should be enough
+- check state and version of zfs with 'zpool upgrade -v'
+- Enjoy !
+
+
+This repository contains the following things:
+
+- Bliss Initramfs Creator - v1.8.1
+- (slightly modified to succeed build) Kernel Configuration of SysRescCD 4.3.0 kernels
+- up-to-date ZFS SRM modules for SysRescCD 4.3.0 (spl, zfs-kmod, zfs), as of September 4th to 5th (CEST) 2014
+
+
+
+Below is the README of Bliss Initramfs 1.8.1, which was referenced in
+http://www.funtoo.org/Creating_System_Rescue_CD_ZFS_Modules and
+was downloaded from https://github.com/fearedbliss/bliss-initramfs
+
+
+
+Bliss Initramfs Creator - v1.8.1
+Jonathan Vasquez <jvasquez1011@gmail.com>
+Funtoo Linux @ ZoL 0.6.1
+
+Distributed under the Simplified BSD License which can be found in the LICENSE file.
+
+This script generates an initramfs image with all the included files and 
+dependencies needed to mount your zpool.
+
+You will need a few programs already installed on your computer since this 
+script just automates the process of you actually going into your filesystem,
+and getting all those files.
+
+Please have the following installed:
+
+- Linux Kernel
+  ZLIB_INFLATE/DEFLATE must be compiled into the kernel (not as a module).
+  > ZLIB_INFLATE [=y], ZLIB_DEFLATE [=y]
+  
+  General setup --->
+  > [*] Initial RAM filesystem and RAM disk (initramfs/initrd) support
+  > () Initramfs source file(s)
+
+  Device Drivers --->
+  > Generic Driver Options --->
+  >> [*] Maintain a devtmpfs filesystem to mount at /dev
+  >> [*] Automount devtmpfs at /dev, after the kernel mounted the rootfs
+
+  # Only if you want to make an SRM
+  > File systems --->
+  >> Miscellaneous filesystems --->
+  >>> <*> SquashFS 4.0 - Squashed file system support
+  >>> [*] Squashfs XATTR support
+  >>> [*] Include support for ZLIB compressed file systems
+  >>> [*] Include support for LZO compressed file systems
+  >>> [*] Include support for XZ compressed file systems
+
+  * All other drivers required to see your PATA/SATA drives must be compiled in.
+
+- app-arch/cpio
+- sys-apps/busybox
+- sys-kernel/spl
+- sys-fs/zfs
+- sys-fs/zfs-kmod
+
+For SRM creation:
+- sys-fs/squashfs-tools
+
+For LUKS support:
+- sys-fs/cryptsetup
+
+- Linux Kernel
+  Device Drivers --->
+  [*] Multiple devices driver support (RAID and LVM) --->
+  <*> Device mapper support
+  <*> Crypt target support
+
+  Cryptographic API --->
+  <*> XTS support
+  -*- AES cipher algorithms
+
+For more information/instructions check the USAGE file.
