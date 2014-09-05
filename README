@@ -1,5 +1,32 @@
+ABOUT
+-----------------------------------------------------------------------------------------------------------------------
+The ZFS kernel modules provided within this repository (SRM files)
+add up-to-date support to SystemRescueCD for accessing current ZFS pools
+(by courtesy of the ZFSonLinux and OpenZFS project).
+
+Since some of us are running bleeding-edge, upgraded upstream 
+zpools, with the usually provided ZFS support in the liveCDs 
+and live-media (v0.6.2, v0.6.3) access isn't easily possible to 
+the stored data, which can be quite troubling in case of emergencies.
+
+With the introduction of the SRM (System-Rescue-Modules) it is quite
+easy to add additional programs or kernel modules - therefore this
+project.
+
+
+
+CONTENT
+-----------------------------------------------------------------------------------------------------------------------
+This repository contains the following things:
+
+- Bliss Initramfs Creator - v1.8.1
+- (slightly modified to succeed build) Kernel Configuration of SysRescCD 4.3.0 kernels
+- up-to-date ZFS SRM modules for SysRescCD 4.3.0 (spl, zfs-kmod, zfs), as of September 4th to 5th (CEST) 2014
+
+
+
 HOWTO
-------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------
 - when using SystemRescueCD 4.3.0 on an USB stick - everything needed to do is 
 - follow the instructions from http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick
 - have the usbstick mounted (mount -t vfat /dev/sdf1 /mnt/usbstick)
@@ -13,24 +40,24 @@ HOWTO
 - Enjoy !
 
 
-CONTENT
-------------------------------------------------------------------
-This repository contains the following things:
 
-- Bliss Initramfs Creator - v1.8.1
-- (slightly modified to succeed build) Kernel Configuration of SysRescCD 4.3.0 kernels
-- up-to-date ZFS SRM modules for SysRescCD 4.3.0 (spl, zfs-kmod, zfs), as of September 4th to 5th (CEST) 2014
-
-
-
-LICENSES
-------------------------------------------------------------------
+LICENSES, COPYRIGHT
+-----------------------------------------------------------------------------------------------------------------------
 Below is the README of Bliss Initramfs 1.8.1, which was referenced in
 http://www.funtoo.org/Creating_System_Rescue_CD_ZFS_Modules and
 was downloaded from https://github.com/fearedbliss/bliss-initramfs
 
+SPL:
+----------------------------------------------------------------------
+https://github.com/zfsonlinux/spl/blob/master/COPYING
+
+ZFS:
+----------------------------------------------------------------------
+https://github.com/zfsonlinux/zfs/blob/master/COPYRIGHT
 
 
+Bliss Initramfs:
+----------------------------------------------------------------------
 Bliss Initramfs Creator - v1.8.1
 Jonathan Vasquez <jvasquez1011@gmail.com>
 Funtoo Linux @ ZoL 0.6.1
