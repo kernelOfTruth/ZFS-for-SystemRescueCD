@@ -25,6 +25,12 @@ This repository contains the following things:
   (SRM-modules/4.3.0)
 
 
+SRM-Modules
+-----------------------------------------------------------------------------------------------------------------------
+Info about the kernel modules:
+Toolchain was: Binutils 2.23.2, GCC Hardened 4.4.7 p1.2, pie 0.4.5 (very similar to SystemRescueCD)
+CFLAGS: march=core2
+
 
 HOWTO
 -----------------------------------------------------------------------------------------------------------------------
