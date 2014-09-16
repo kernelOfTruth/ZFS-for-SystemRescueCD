@@ -1,3 +1,13 @@
+v8
+----------------------------------------
+still on SystemRescueCD 4.3.0
+sys-kernel/spl at f9bde4f74be5e5030571415d9c869400dff3eda6
+sys-fs/zfs-kmod & sys-fs/zfs at 2d501583430e54be39c6aed033fc6f841e469f23
+added 2484 patchset (zvol rework)
+added 2351 patchset (sha256 x86_64 optimization v2; SSSE3, AVX, AVX2)
+added 2672 patchset (Illumos #3525 persistent l2arc)
+kernel-modules compiled with march=nocona, should work on older 64bit boxes now
+
 v7
 ----------------------------------------
 some info about the toolchain & CFLAGS

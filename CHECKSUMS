@@ -1,13 +1,15 @@
-md5:
+CHECKSUMS:
+-----------------------------------------------------------------------------------------------------------------------
+md5sum:
 0f55e376c8b5092dbfddc4483efc890c  bliss-initramfs/1.8.1/bliss-initramfs-1.8.1.tar.gz
-7fe7a7f2cb2ca95570b20db1f2684469  zfs-core-3.10.45-std430-amd64.srm
-34437159990023d60e3d4913929091ba  zfs-core-3.14.9-alt430-amd64.srm
-fd74324557baf462477d6f331c1089d3  zfs-kmod-3.10.45-std430-amd64.srm
-cf03765fe89628049ca44f422d3e8e5c  zfs-kmod-3.14.9-alt430-amd64.srm
+995935150871e7cc1dfa2535bd21a37e  zfs-core-3.10.45-std430-amd64.srm
+d1769f6501114a1b09aff2a6c050a91e  zfs-core-3.14.9-alt430-amd64.srm
+14bad9f33e433bf8f08735af1f393e0b  zfs-kmod-3.10.45-std430-amd64.srm
+eb1c0af81ef0fd685d0e9028252ab04a  zfs-kmod-3.14.9-alt430-amd64.srm
 
-sha256:
+sha256sum:
 91b9bf10631162ea346c806e6474e3fa4ee23193bcd23fa20efeb9c4796e0c12  bliss-initramfs/1.8.1/bliss-initramfs-1.8.1.tar.gz
-17a13bc72579b18e986b8081d7a5e323e8376f8328ffc0539be984f9ffbad9b8  zfs-core-3.10.45-std430-amd64.srm
-374285fcee354c878b563c0cc501a2f7ab0699a5d3d9c71ee04e0ea9328dc9e8  zfs-core-3.14.9-alt430-amd64.srm
-407226ffe655a99d9cdefdee59937c559e60b69167bf8f32f9040eec855f2377  zfs-kmod-3.10.45-std430-amd64.srm
-d5b7b770ff7b6b6eb31b58ccaffe23d32e0b4ae9b1af9021d27d6d7269afff2c  zfs-kmod-3.14.9-alt430-amd64.srm
+fc3796afcd8d5a5b03ad82a09f6a07c72a0efac32ae166c2f6756cd7199896af  zfs-core-3.10.45-std430-amd64.srm
+102e9211550d1f5927af448a84c360f112673839608c0eaa96fafca710c03eb1  zfs-core-3.14.9-alt430-amd64.srm
+13b09867893aee016064c6c8481de8c4a2e89208c998daea9d981264d8ae7f8c  zfs-kmod-3.10.45-std430-amd64.srm
+a309af1977f8c2945b1c8a1fa3d57ad182a5c6a7b341308acd627bab47c359e5  zfs-kmod-3.14.9-alt430-amd64.srm

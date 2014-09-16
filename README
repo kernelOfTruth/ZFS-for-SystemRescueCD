@@ -29,7 +29,7 @@ SRM-Modules
 -----------------------------------------------------------------------------------------------------------------------
 Info about the kernel modules:
 Toolchain was: Binutils 2.23.2, GCC Hardened 4.4.7 p1.2, pie 0.4.5 (very similar to SystemRescueCD)
-CFLAGS: march=core2
+CFLAGS: march=nocona
 
 
 HOWTO
@@ -129,3 +129,8 @@ For LUKS support:
   -*- AES cipher algorithms
 
 For more information/instructions check the USAGE file.
+
+
+CHANGES
+-----------------------------------------------------------------------------------------------------------------------
+the history of changes is listed in the CHANGES file
