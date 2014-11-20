@@ -1,3 +1,59 @@
+testing02
+----------------------------------------
+testing modules with
+    
+CFLAGS="-O2 -march=nocona -mtune=generic -pipe"
+CXXFLAGS="${CFLAGS}"
+    
+spl- & zfs-tree states are from upstream, NOW (11/20/2014; 20.11.2014)
+    
+Since lots of patches from the last testing modules have been merged meanwhile into upstream
+and since 2129 (the major ARC changes) and the spl patch don't apply cleanly anymore - due to further evaluation work
+they're left out for now;
+as requested another round of test modules - now also for 3.10.45 kernel
+    
+additional SPL-patches:
+* NONE this time
+    
+additional ZFS-patches:
+* 10.10.2014_Illumos-4950 files sometimes can't be removed from a full filesystem_2784
+* 14.11.2014_Illumos_5244 zio pipeline callers should explicitly invoke next stage_2828
+* 14.11.2014_Store common Linux xattrs as native SA with xattr-sa_2809
+* 19.11.2014_Don't read space maps during import for readonly pools_2909
+    
+This should make the modules especially helpful during troubleshooting and if you're affected by
+one of the bugs in those additional patches
+    
+Keep in mind though that without the ARC changes there might be higher chance of possible OOM issues
+(if your workflow causes it or has caused it in the past)
+    
+Cheers !
+
+
+testing01
+----------------------------------------
+testing modules with
+    
+CFLAGS="-O2 -march=nocona -mtune=generic -pipe"
+CXXFLAGS="${CFLAGS}"
+    
+spl- & zfs-tree states are from upstream, NOW (11/15/2014; 15.11.2014)
+    
+additional SPL-patches:
+* random_get_pseudo_bytes() need not provide cryptographic strength entropy #372 (30.10.2014)
+    
+additional ZFS-patches:
+* Move\ ARC\ data\ buffers\ out\ of\ vmalloc #2129 (03.10.2014)
+* Illumos-4950 files sometimes can't be removed from a full filesystem #2784 (10.10.2014)
+* Redispatch ZIOs in deep call graphs #2786 (10.10.2014)
+* Prevent ZFS leaking pool free space #2896 (14.11.2014)
+* Undirty removed spill blocks #2884 (14.11.2014)
+* Illumos_5244 zio pipeline callers should explicitly invoke next stage #2828 (14.11.2014)
+* Fix snapshots with dirty inodes #2814 (14.11.2014)
+* Store common Linux xattrs as native SA with xattr-sa #2809 (14.11.2014)
+* Use kmem_vasprintf() in log_internal() #2791 (14.11.2014)
+
+
 v8
 ----------------------------------------
 still on SystemRescueCD 4.3.0
