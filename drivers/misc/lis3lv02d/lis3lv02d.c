@@ -217,7 +217,8 @@ static void lis3lv02d_get_xyz(struct lis3lv02d *lis3, int *x, int *y, int *z)
 /* conversion btw sampling rate and the register values */
 static int lis3_12_rates[4] = {40, 160, 640, 2560};
 static int lis3_8_rates[2] = {100, 400};
-static int lis3_3dc_rates[16] = {0, 1, 10, 25, 50, 100, 200, 400, 1600, 5000};
+/* LIS3DC: 0 = power off, above 9 = undefined */
+static int lis3_3dc_rates[16] = {0, 1, 10, 25, 50, 100, 200, 400, 1600, 5000, -1, -1, -1, -1, -1, -1};
 static int lis3_3dlh_rates[4] = {50, 100, 400, 1000};
 
 /* ODR is Output Data Rate */
@@ -232,12 +233,11 @@ static int lis3lv02d_get_odr(struct lis3lv02d *lis3)
 	return lis3->odrs[(ctrl >> shift)];
 }
 
-static int lis3lv02d_get_pwron_wait(struct lis3lv02d *lis3)
+static int lis3lv02d_wait_pwron(struct lis3lv02d *lis3)
 {
 	int div = lis3lv02d_get_odr(lis3);
-
-	if (WARN_ONCE(div == 0, "device returned spurious data"))
-		return -ENXIO;
+	if (div <= 0)
+		div = 1; /* maximum delay */
 
 	/* LIS3 power on delay is quite long */
 	msleep(lis3->pwron_delay / div);
@@ -304,7 +304,7 @@ static int lis3lv02d_selftest(struct lis3lv02d *lis3, s16 results[3])
 
 	lis3->read(lis3, ctlreg, &reg);
 	lis3->write(lis3, ctlreg, (reg | selftest));
-	ret = lis3lv02d_get_pwron_wait(lis3);
+	ret = lis3lv02d_wait_pwron(lis3);
 	if (ret)
 		goto fail;
 
@@ -315,7 +315,7 @@ static int lis3lv02d_selftest(struct lis3lv02d *lis3, s16 results[3])
 
 	/* back to normal settings */
 	lis3->write(lis3, ctlreg, reg);
-	ret = lis3lv02d_get_pwron_wait(lis3);
+	ret = lis3lv02d_wait_pwron(lis3);
 	if (ret)
 		goto fail;
 
@@ -435,7 +435,7 @@ int lis3lv02d_poweron(struct lis3lv02d *lis3)
 		}
 	}
 
-	err = lis3lv02d_get_pwron_wait(lis3);
+	err = lis3lv02d_wait_pwron(lis3);
 	if (err)
 		return err;
 

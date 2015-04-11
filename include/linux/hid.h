@@ -300,6 +300,19 @@ struct hid_item {
 #define HID_GROUP_MULTITOUCH			0x0002
 #define HID_GROUP_SENSOR_HUB			0x0003
 #define HID_GROUP_MULTITOUCH_WIN_8		0x0004
+#define HID_GROUP_HAVE_SPECIAL_DRIVER		0xffff
+/*
+ * HID_GROUP_HAVE_SPECIAL_DRIVER should be used when the device needs to be
+ * scanned in case it is handled by either hid-multitouch, hid-generic,
+ * hid-sensor-hub or any other generic hid driver.
+ *
+ * Devices declared in hid_have_special_driver[] in hid-core.c can use
+ * HID_GROUP_ANY instead because there will be not overlap between their
+ * specific driver and a generic one.
+ *
+ * Note: HID_GROUP_ANY is declared in linux/mod_devicetable.h
+ * and has a value of 0x0000
+ */
 
 /*
  * This is the global environment of the parser. This information is
@@ -572,6 +585,8 @@ struct hid_descriptor {
 	.bus = BUS_USB, .vendor = (ven), .product = (prod)
 #define HID_BLUETOOTH_DEVICE(ven, prod)					\
 	.bus = BUS_BLUETOOTH, .vendor = (ven), .product = (prod)
+#define HID_I2C_DEVICE(ven, prod)				\
+	.bus = BUS_I2C, .vendor = (ven), .product = (prod)
 
 #define HID_REPORT_ID(rep) \
 	.report_type = (rep)

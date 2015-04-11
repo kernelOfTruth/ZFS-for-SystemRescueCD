@@ -298,6 +298,9 @@ static int __init omap_dss_init(void)
 	int r;
 	int i;
 
+	/* hack to load encoder-tfp410 driver */
+	request_module("encoder-tfp410");
+
 	r = platform_driver_probe(&omap_dss_driver, omap_dss_probe);
 	if (r)
 		return r;

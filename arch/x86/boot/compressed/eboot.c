@@ -12,6 +12,7 @@
 #include <asm/efi.h>
 #include <asm/setup.h>
 #include <asm/desc.h>
+#include <asm/bootparam_utils.h>
 
 #undef memcpy			/* Use memcpy from misc.c */
 
@@ -742,6 +743,55 @@ free_mem_map:
 }
 
 
+static int get_secure_boot(void)
+{
+	u8 sb, setup, moksbstate;
+	unsigned long datasize = sizeof(sb);
+	u32 attr;
+	efi_guid_t var_guid = EFI_GLOBAL_VARIABLE_GUID;
+	efi_status_t status;
+
+	status = efi_call_phys5(sys_table->runtime->get_variable,
+				L"SecureBoot", &var_guid, NULL, &datasize, &sb);
+
+	if (status != EFI_SUCCESS)
+		return 0;
+
+	if (sb == 0)
+		return 0;
+
+
+	status = efi_call_phys5(sys_table->runtime->get_variable,
+				L"SetupMode", &var_guid, NULL, &datasize,
+				&setup);
+
+	if (status != EFI_SUCCESS)
+		return 0;
+
+	if (setup == 1)
+		return 0;
+
+	/* See if a user has put shim into insecure_mode.  If so, and the variable
+	 * doesn't have the runtime attribute set, we might as well honor that.
+	 */
+	var_guid = EFI_SHIM_LOCK_GUID;
+	status = efi_call_phys5(sys_table->runtime->get_variable,
+				L"MokSBState", &var_guid, &attr, &datasize,
+				&moksbstate);
+
+	/* If it fails, we don't care why.  Default to secure */
+	if (status != EFI_SUCCESS)
+		return 1;
+
+	if (!(attr & EFI_VARIABLE_RUNTIME_ACCESS)) {
+		if (moksbstate == 1)
+			return 0;
+	}
+
+	return 1;
+}
+
+
 /*
  * On success we return a pointer to a boot_params structure, and NULL
  * on failure.
@@ -760,6 +810,10 @@ struct boot_params *efi_main(void *handle, efi_system_table_t *_table,
 	/* Check if we were booted by the EFI firmware */
 	if (sys_table->hdr.signature != EFI_SYSTEM_TABLE_SIGNATURE)
 		goto fail;
+
+	sanitize_boot_params(boot_params);
+
+	boot_params->secure_boot = get_secure_boot();
 
 	setup_graphics(boot_params);
 

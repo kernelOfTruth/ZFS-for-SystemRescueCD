@@ -70,6 +70,11 @@
 #include <linux/tboot.h>
 #include <linux/jiffies.h>
 
+#include <linux/fips.h>
+#include <linux/cred.h>
+#include <linux/sysrq.h>
+#include <linux/init_task.h>
+
 #include <video/edid.h>
 
 #include <asm/mtrr.h>
@@ -1143,6 +1148,14 @@ void __init setup_arch(char **cmdline_p)
 
 	io_delay_init();
 
+#ifdef CONFIG_EFI_SECURE_BOOT_SIG_ENFORCE
+	if (boot_params.secure_boot) {
+		set_bit(EFI_SECURE_BOOT, &x86_efi_facility);
+		enforce_signed_modules();
+		pr_info("Secure boot enabled\n");
+	}
+#endif
+
 	/*
 	 * Parse the ACPI tables for possible boot-time SMP configuration.
 	 */
@@ -1260,6 +1273,37 @@ void __init i386_reserve_resources(void)
 }
 
 #endif /* CONFIG_X86_32 */
+
+#ifdef CONFIG_MAGIC_SYSRQ
+#ifdef CONFIG_MODULE_SIG
+extern bool sig_enforce;
+#endif
+
+static void sysrq_handle_secure_boot(int key)
+{
+	if (!efi_enabled(EFI_SECURE_BOOT))
+		return;
+
+	pr_info("Secure boot disabled\n");
+#ifdef CONFIG_MODULE_SIG
+	sig_enforce = fips_enabled;
+#endif
+}
+static struct sysrq_key_op secure_boot_sysrq_op = {
+	.handler	=	sysrq_handle_secure_boot,
+	.help_msg	=	"unSB(x)",
+	.action_msg	=	"Disabling Secure Boot restrictions",
+	.enable_mask	=	SYSRQ_DISABLE_USERSPACE,
+};
+static int __init secure_boot_sysrq(void)
+{
+	if (efi_enabled(EFI_SECURE_BOOT))
+		register_sysrq_key('x', &secure_boot_sysrq_op);
+	return 0;
+}
+late_initcall(secure_boot_sysrq);
+#endif /*CONFIG_MAGIC_SYSRQ*/
+
 
 static struct notifier_block kernel_offset_notifier = {
 	.notifier_call = dump_kernel_offset

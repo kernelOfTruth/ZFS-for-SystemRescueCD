@@ -1033,7 +1033,7 @@ extern int drm_mode_hsync(const struct drm_display_mode *mode);
 extern int drm_mode_vrefresh(const struct drm_display_mode *mode);
 extern void drm_mode_set_crtcinfo(struct drm_display_mode *p,
 				  int adjust_flags);
-extern void drm_mode_connector_list_update(struct drm_connector *connector);
+extern void drm_mode_connector_list_update(struct drm_connector *connector, bool merge_type_bits);
 extern int drm_mode_connector_update_edid_property(struct drm_connector *connector,
 						struct edid *edid);
 extern int drm_object_property_set_value(struct drm_mode_object *obj,

@@ -436,11 +436,15 @@ static irqreturn_t atkbd_interrupt(struct serio *serio, unsigned char data,
 		goto out;
 	case ATKBD_RET_ACK:
 	case ATKBD_RET_NAK:
+# if 0
+		/* Quite a few key switchers and other tools trigger this
+		 * and it confuses people who can do nothing about it */
 		if (printk_ratelimit())
 			dev_warn(&serio->dev,
 				 "Spurious %s on %s. "
 				 "Some program might be trying to access hardware directly.\n",
 				 data == ATKBD_RET_ACK ? "ACK" : "NAK", serio->phys);
+#endif
 		goto out;
 	case ATKBD_RET_ERR:
 		atkbd->err_count++;

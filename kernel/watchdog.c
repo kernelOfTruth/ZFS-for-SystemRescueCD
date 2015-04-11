@@ -24,6 +24,7 @@
 #include <linux/sysctl.h>
 #include <linux/smpboot.h>
 #include <linux/sched/rt.h>
+#include <linux/dmi.h>
 
 #include <asm/irq_regs.h>
 #include <linux/kvm_para.h>
@@ -95,6 +96,32 @@ static int __init nosoftlockup_setup(char *str)
 }
 __setup("nosoftlockup", nosoftlockup_setup);
 /*  */
+
+static int disable_watchdog(const struct dmi_system_id *d)
+{
+	printk(KERN_INFO "watchdog: disabled (inside virtual machine)\n");
+	watchdog_user_enabled = 0;
+	return 0;
+}
+
+static const struct dmi_system_id watchdog_virt_dmi_table[] = {
+	{
+		.callback = disable_watchdog,
+		.ident = "VMware",
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "VMware, Inc."),
+		},
+	},
+	{
+		.callback = disable_watchdog,
+		.ident = "Bochs",
+		.matches = {
+			DMI_MATCH(DMI_SYS_VENDOR, "Bochs"),
+		},
+	},
+	{}
+};
+
 
 /*
  * Hard-lockup warnings should be triggered after just a few seconds. Soft-
@@ -599,6 +626,8 @@ out:
 
 void __init lockup_detector_init(void)
 {
+	dmi_check_system(watchdog_virt_dmi_table);
+
 	set_sample_period();
 
 	if (watchdog_user_enabled)

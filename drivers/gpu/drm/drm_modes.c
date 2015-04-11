@@ -1025,7 +1025,7 @@ EXPORT_SYMBOL(drm_mode_sort);
  * list and only adds different modes. All modes unverified after this point
  * will be removed by the prune invalid modes.
  */
-void drm_mode_connector_list_update(struct drm_connector *connector)
+void drm_mode_connector_list_update(struct drm_connector *connector, bool merge_type_bits)
 {
 	struct drm_display_mode *mode;
 	struct drm_display_mode *pmode, *pt;
@@ -1041,7 +1041,10 @@ void drm_mode_connector_list_update(struct drm_connector *connector)
 				/* if equal delete the probed mode */
 				mode->status = pmode->status;
 				/* Merge type bits together */
-				mode->type |= pmode->type;
+				if (merge_type_bits)
+					mode->type |= pmode->type;
+				else
+					mode->type = pmode->type;
 				list_del(&pmode->head);
 				drm_mode_destroy(connector->dev, pmode);
 				break;

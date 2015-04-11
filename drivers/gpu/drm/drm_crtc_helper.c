@@ -120,8 +120,8 @@ static void drm_mode_validate_flag(struct drm_connector *connector,
  * RETURNS:
  * Number of modes found on @connector.
  */
-int drm_helper_probe_single_connector_modes(struct drm_connector *connector,
-					    uint32_t maxX, uint32_t maxY)
+static int drm_helper_probe_single_connector_modes_merge_bits(struct drm_connector *connector,
+					    uint32_t maxX, uint32_t maxY, bool merge_type_bits)
 {
 	struct drm_device *dev = connector->dev;
 	struct drm_display_mode *mode;
@@ -173,7 +173,7 @@ int drm_helper_probe_single_connector_modes(struct drm_connector *connector,
 	if (count == 0)
 		goto prune;
 
-	drm_mode_connector_list_update(connector);
+	drm_mode_connector_list_update(connector, merge_type_bits);
 
 	if (maxX && maxY)
 		drm_mode_validate_size(dev, &connector->modes, maxX,
@@ -213,7 +213,20 @@ prune:
 
 	return count;
 }
+
+int drm_helper_probe_single_connector_modes(struct drm_connector *connector,
+					    uint32_t maxX, uint32_t maxY)
+{
+	return drm_helper_probe_single_connector_modes_merge_bits(connector, maxX, maxY, true);
+}
 EXPORT_SYMBOL(drm_helper_probe_single_connector_modes);
+
+int drm_helper_probe_single_connector_modes_nomerge(struct drm_connector *connector,
+						    uint32_t maxX, uint32_t maxY)
+{
+	return drm_helper_probe_single_connector_modes_merge_bits(connector, maxX, maxY, false);
+}
+EXPORT_SYMBOL(drm_helper_probe_single_connector_modes_nomerge);
 
 /**
  * drm_helper_encoder_in_use - check if a given encoder is in use

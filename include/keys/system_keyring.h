@@ -18,6 +18,10 @@
 
 extern struct key *system_trusted_keyring;
 
+#ifdef CONFIG_SYSTEM_BLACKLIST_KEYRING
+extern struct key *system_blacklist_keyring;
+#endif
+
 #endif
 
 #endif /* _KEYS_SYSTEM_KEYRING_H */
