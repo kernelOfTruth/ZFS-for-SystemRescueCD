@@ -1,3 +1,18 @@
+v9
+----------------------------------------
+upgrade to SystemRescueCD 4.5.2
+SPL & ZFS upgrade to v0.6.4
+sys-kernel/spl at cd69f020e4b0f9c416dd07a264e48c9488a7633f
+sys-fs/zfs-kmod & sys-fs/zfs at d07a16360c1ee219b8820f80d035e56a18c58b84
+no additional commits for now
+improved readability of the README file
+added reference for sources to README
+updated README, CHECKSUMS and CHANGES file.
+
+Added kernel sources to the repo for your convenience:
+https://github.com/kernelOfTruth/ZFS-for-SystemRescueCD/tree/linux-3.14.35-std452-amd64
+https://github.com/kernelOfTruth/ZFS-for-SystemRescueCD/tree/linux-3.18.10-alt452-amd64
+
 v8
 ----------------------------------------
 still on SystemRescueCD 4.3.0

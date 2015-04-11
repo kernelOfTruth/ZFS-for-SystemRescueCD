@@ -6,12 +6,13 @@ add up-to-date support to SystemRescueCD for accessing current ZFS pools
 
 Since some of us are running bleeding-edge, upgraded upstream 
 zpools, with the usually provided ZFS support in the liveCDs 
-and live-media (v0.6.2, v0.6.3) access isn't easily possible to 
-the stored data, which can be quite troubling in case of emergencies.
+and live-media (v0.6.2, and especially v0.6.3 & v0.6.4+) access isn't easily 
+possible to the stored data, which can be quite troubling in case 
+of emergencies.
 
 With the introduction of the SRM (System-Rescue-Modules) it is quite
-easy to add additional programs or kernel modules - therefore this
-project.
+easy to add additional programs or kernel modules - therefore the
+emergence of this project.
 
 
 
@@ -20,31 +21,46 @@ CONTENT
 This repository contains the following things:
 
 - Bliss Initramfs Creator - v1.8.1 (bliss-initramfs/1.8.1)
+
 - Kernel Configuration of SysRescCD 4.3.0 kernels (slightly modified to succeed build; kernel-config/config-amd64-*)
-- up-to-date ZFS SRM modules for SysRescCD 4.3.0 (spl, zfs-kmod, zfs), as of September 4th to 5th (CEST) 2014
-  (SRM-modules/4.3.0)
+
+- up-to-date ZFS SRM modules for SysRescCD 4.5.2 (spl, zfs-kmod, zfs), as of April 10th to 11th (CEST) 2015
+  (SRM-modules/4.5.2)
 
 
 SRM-Modules
 -----------------------------------------------------------------------------------------------------------------------
 Info about the kernel modules:
-Toolchain was: Binutils 2.23.2, GCC Hardened 4.4.7 p1.2, pie 0.4.5 (very similar to SystemRescueCD)
-CFLAGS: march=nocona
+
+Toolchain was: Binutils 2.23.2, GCC Hardened 4.8.4 p1.3, pie-0.6.1 (very similar to SystemRescueCD)
+
+CFLAGS: -march=nocona -mtune=generic
 
 
 HOWTO
 -----------------------------------------------------------------------------------------------------------------------
-- when using SystemRescueCD 4.3.0 on an USB stick - everything needed to do is 
+
+- when using SystemRescueCD 4.5.2 on an USB stick - everything needed to do is
+ 
 - follow the instructions from http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick
+
 - have the usbstick mounted (mount -t vfat /dev/sdf1 /mnt/usbstick)
-- then copy over the zfs-core and zfs-kmod SRM files to the root of the usbstick(zfs-core-3.10.45-std430-amd64.srm, 
-  zfs-core-3.14.9-alt430-amd64.srm, zfs-kmod-3.10.45-std430-amd64.srm, zfs-kmod-3.14.9-alt430-amd64.srm)
+
+- then copy over the zfs-core and zfs-kmod SRM files to the root of the usbstick(zfs-core-3.14.35-std452-amd64.srm, 
+  zfs-core-3.18.10-alt452-amd64.srm, zfs-kmod-3.14.35-std452-amd64.srm, zfs-kmod-3.18.10-alt452-amd64.srm)
+  
 - make sure that the usbstick is bootable, otherwise rewrite syslinux to the device (e.g. syslinux /dev/sdf1 && sync)
+
 - ...
+
 - during boot choose the 64bit versions (both default and alternative are supported), pick your keymap configuration
+
 - after boot has finished run 'depmod'
+
 - then a simple 'modprobe zfs' should be enough
+
 - check state and version of zfs with 'zpool upgrade -v'
+
 - Enjoy !
 
 
@@ -129,6 +145,18 @@ For LUKS support:
   -*- AES cipher algorithms
 
 For more information/instructions check the USAGE file.
+
+
+
+SOURCES
+-----------------------------------------------------------------------------------------------------------------------
+Kernel sources (at least for 4.5.2) can be found at:
+https://github.com/kernelOfTruth/ZFS-for-SystemRescueCD/tree/linux-3.14.35-std452-amd64
+https://github.com/kernelOfTruth/ZFS-for-SystemRescueCD/tree/linux-3.18.10-alt452-amd64
+
+Sources for SPL and ZFS can be found at (mirrored from the ZFS upstream repos):
+https://github.com/kernelOfTruth/zfs/commits/zfs_master_09.04.2015_0.6.4
+https://github.com/kernelOfTruth/spl/commits/spl_master_09.04.2015_0.6.4
 
 
 CHANGES
