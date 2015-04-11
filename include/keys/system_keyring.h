@@ -28,4 +28,8 @@ static inline struct key *get_system_trusted_keyring(void)
 }
 #endif
 
+#ifdef CONFIG_SYSTEM_BLACKLIST_KEYRING
+extern struct key *system_blacklist_keyring;
+#endif
+
 #endif /* _KEYS_SYSTEM_KEYRING_H */

@@ -165,7 +165,23 @@ config DEBUG_INFO_DWARF4
 	  Generate dwarf4 debug info. This requires recent versions
 	  of gcc and gdb. It makes the debug information larger.
 	  But it significantly improves the success of resolving
-	  variables in gdb on optimized code.
+	  variables in gdb on optimized code.  The gcc docs also
+	  recommend enabling -fvar-tracking-assignments for maximum
+	  benefit. (see DEBUG_INFO_VTA)
+
+config DEBUG_INFO_VTA
+	bool "Enable var-tracking-assignments for debuginfo"
+	depends on DEBUG_INFO
+	help
+	  Enable gcc -fvar-tracking-assignments for improved debug
+	  information on variable locations in optimized code.  Per
+	  gcc, DEBUG_INFO_DWARF4 is recommended for best use of VTA.
+
+	  VTA has been implicated in codegen bugs (gcc PR61801,
+	  PR61904), so this may deserve some caution.  One can set
+	  GCC_COMPARE_DEBUG=-fvar-tracking-assignments-toggle in the
+	  environment to automatically compile everything both ways,
+	  generating an error if anything differs.
 
 config ENABLE_WARN_DEPRECATED
 	bool "Enable __deprecated logic"

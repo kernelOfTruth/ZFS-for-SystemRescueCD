@@ -4,6 +4,9 @@
 
 menu "Character devices"
 
+config CRASH
+	tristate "Crash Utility memory driver"
+
 source "drivers/tty/Kconfig"
 
 config DEVKMEM

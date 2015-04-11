@@ -185,13 +185,24 @@ static void pnv_smp_cpu_kill_self(void)
 
 #endif /* CONFIG_HOTPLUG_CPU */
 
+static int pnv_cpu_bootable(unsigned int nr)
+{
+	/* Starting with POWER8, all CPUs need to be booted to avoid hangs
+	 * during subcore init.
+	 */
+	if (cpu_has_feature(CPU_FTR_ARCH_207S))
+		return 1;
+
+	return smp_generic_cpu_bootable(nr);
+}
+
 static struct smp_ops_t pnv_smp_ops = {
 	.message_pass	= smp_muxed_ipi_message_pass,
 	.cause_ipi	= NULL,	/* Filled at runtime by xics_smp_probe() */
 	.probe		= xics_smp_probe,
 	.kick_cpu	= pnv_smp_kick_cpu,
 	.setup_cpu	= pnv_smp_setup_cpu,
-	.cpu_bootable	= smp_generic_cpu_bootable,
+	.cpu_bootable	= pnv_cpu_bootable,
 #ifdef CONFIG_HOTPLUG_CPU
 	.cpu_disable	= pnv_smp_cpu_disable,
 	.cpu_die	= generic_cpu_die,

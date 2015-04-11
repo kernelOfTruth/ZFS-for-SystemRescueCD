@@ -704,7 +704,11 @@ KBUILD_CFLAGS	+= -fomit-frame-pointer
 endif
 endif
 
+ifdef CONFIG_DEBUG_INFO_VTA
+KBUILD_CFLAGS   += $(call cc-option, -fvar-tracking-assignments)
+else
 KBUILD_CFLAGS   += $(call cc-option, -fno-var-tracking-assignments)
+endif
 
 ifdef CONFIG_DEBUG_INFO
 ifdef CONFIG_DEBUG_INFO_SPLIT
