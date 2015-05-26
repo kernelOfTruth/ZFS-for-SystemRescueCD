@@ -2,18 +2,18 @@ CHECKSUMS:
 -----------------------------------------------------------------------------------------------------------------------
 md5sum:
 0f55e376c8b5092dbfddc4483efc890c  bliss-initramfs/1.8.1/bliss-initramfs-1.8.1.tar.gz
-md5sum zfs-*
-85cf5e5218662c60c43f51bf551bd6f2  zfs-core-3.14.35-std452-amd64.srm
-2b3ddeb6be6030d9764ba6ef31d5f9d2  zfs-core-3.18.10-alt452-amd64.srm
-acc128fe627264f163e8959b3090006c  zfs-kmod-3.14.35-std452-amd64.srm
-9b329b2254908e0cc14754116aa254ce  zfs-kmod-3.18.10-alt452-amd64.srm
+md5sum *
+69b00396b70875892fb1b847dc741e4e  zfs-core-3.14.35-std452-amd64.srm
+e608689514124038d9487a21acec292f  zfs-core-3.18.10-alt452-amd64.srm
+5a17902287fc1ba8756e3e2b25fa6d5a  zfs-kmod-3.14.35-std452-amd64.srm
+85833f68920182df97d0da566e54e7dc  zfs-kmod-3.18.10-alt452-amd64.srm
 
 
 sha256sum:
 91b9bf10631162ea346c806e6474e3fa4ee23193bcd23fa20efeb9c4796e0c12  bliss-initramfs/1.8.1/bliss-initramfs-1.8.1.tar.gz
-sha256sum zfs-*
-2da1de9601dd6822c2eed9f36ac597372c803d26fded3fa7d58075281617ece5  zfs-core-3.14.35-std452-amd64.srm
-a90d17adfd0bd0ad8f7b62a2015f350b50009cad5aae3a8482adae443d024ed9  zfs-core-3.18.10-alt452-amd64.srm
-77c87c3adefdf14b124071e8dca9d66d6674e717d1f74c66b8073287323b460e  zfs-kmod-3.14.35-std452-amd64.srm
-31f371995e470d0de5696cbe30f3970722c4f2933ff403cb84a3774bc7e54e0e  zfs-kmod-3.18.10-alt452-amd64.srm
+sha256sum *
+adcaeb6f6cd86d01f399c049143cd2bd046f587d2988afae859d180f84504e65  zfs-core-3.14.35-std452-amd64.srm
+49e19348efd3c07a532ba9e0a2b0b95f7579aed540fc9bc36927cbcd640996a1  zfs-core-3.18.10-alt452-amd64.srm
+8bac0449eb6ef9d089ae20307708db1b6f32798781576747f5ea1570c6897155  zfs-kmod-3.14.35-std452-amd64.srm
+0a4001a2cc9960bf4c0b43612e7625663e973a9270c4dab4d8de7f4a9cfc575b  zfs-kmod-3.18.10-alt452-amd64.srm
 

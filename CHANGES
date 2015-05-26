@@ -1,3 +1,15 @@
+v10
+----------------------------------------
+SPL & ZFS upgrade to v0.6.4+ (ZFS 22.05.2015, SPL 21.05.2015)
+Those changes were necessarily due to significant stability- &
+also some performance-related improvements.
+NO additional patches included - all vanilla.
+sys-kernel/spl at dc5e8b70416e5d511bc361309bd426c767177723
+sys-fs/zfs-kmod & sys-fs/zfs at 65037d9b25c2bfa98d0aa5c9e34678127c03b345
+CFLAGS changed to CFLAGS: -march=x86-64 -mtune=generic
+
+updated README, CHECKSUMS and CHANGES file.
+
 v9
 ----------------------------------------
 upgrade to SystemRescueCD 4.5.2

@@ -34,7 +34,7 @@ Info about the kernel modules:
 
 Toolchain was: Binutils 2.23.2, GCC Hardened 4.8.4 p1.3, pie-0.6.1 (very similar to SystemRescueCD)
 
-CFLAGS: -march=nocona -mtune=generic
+CFLAGS: -march=x86-64 -mtune=generic
 
 
 HOWTO
@@ -155,8 +155,8 @@ https://github.com/kernelOfTruth/ZFS-for-SystemRescueCD/tree/linux-3.14.35-std45
 https://github.com/kernelOfTruth/ZFS-for-SystemRescueCD/tree/linux-3.18.10-alt452-amd64
 
 Sources for SPL and ZFS can be found at (mirrored from the ZFS upstream repos):
-https://github.com/kernelOfTruth/zfs/commits/zfs_master_09.04.2015_0.6.4
-https://github.com/kernelOfTruth/spl/commits/spl_master_09.04.2015_0.6.4
+https://github.com/kernelOfTruth/zfs/tree/zfs_master_22.05.2015
+https://github.com/kernelOfTruth/spl/tree/spl_master_21.05.2015
 
 
 CHANGES
