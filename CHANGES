@@ -1,3 +1,8 @@
+v11
+----------------------------------------
+Rebuild, modified /etc/portage/make.conf CFLAGS & CXXFLAGS
+Portage (libtool) seems to use those, GCC 4.8.4 Vanilla specs
+
 v10
 ----------------------------------------
 SPL & ZFS upgrade to v0.6.4+ (ZFS 22.05.2015, SPL 21.05.2015)
