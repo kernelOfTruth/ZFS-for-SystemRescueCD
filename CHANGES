@@ -1,3 +1,24 @@
+v12
+----------------------------------------
+upgrade to SystemRescueCD 4.6.1
+SPL & ZFS upgrade to v0.6.5.3+ (ZFS 18.12.2015, SPL 18.12.2015)
+Containing significant performance and stability improvements
++ regression fixes and additional commits for enhanced maintenance
+
+sys-fs/zfs* branch upstream state @76d5bf196cf6e5625f884a9ebbdaf53873a5a979
++ Illumos 4950, 6292, 6268, 5745 and zfs_object_mutex_size option
+sys-kernel/spl branch upstream state @b4ad50ac5f16de9220452f0da493e67c060d701b
+(both December 18th 2015)
+
+kernel and modules built with x86_64-pc-linux-gnu-4.8.4-vanilla
+CFLAGS and CXXFLAGS set to -march=x86-64 -mtune=generic
+binutils set to x86_64-pc-linux-gnu-2.23.2 and ld.bfd
+
+added information on kernel build to README, updated the kernel config
+in the kernel branches to make kernel build less error-prone
+
+updated README, CHECKSUMS and CHANGES file.
+
 v11
 ----------------------------------------
 Rebuild, modified /etc/portage/make.conf CFLAGS & CXXFLAGS

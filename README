@@ -6,7 +6,7 @@ add up-to-date support to SystemRescueCD for accessing current ZFS pools
 
 Since some of us are running bleeding-edge, upgraded upstream 
 zpools, with the usually provided ZFS support in the liveCDs 
-and live-media (v0.6.2, and especially v0.6.3 & v0.6.4+) access isn't easily 
+and live-media (v0.6.4, and especially v0.6.5*) access isn't easily 
 possible to the stored data, which can be quite troubling in case 
 of emergencies.
 
@@ -22,17 +22,17 @@ This repository contains the following things:
 
 - Bliss Initramfs Creator - v1.8.1 (bliss-initramfs/1.8.1)
 
-- Kernel Configuration of SysRescCD 4.3.0 kernels (slightly modified to succeed build; kernel-config/config-amd64-*)
+- Kernel Configuration of SysRescCD 4.6.1 kernels (slightly modified to succeed build; kernel-config/config-amd64-*)
 
-- up-to-date ZFS SRM modules for SysRescCD 4.5.2 (spl, zfs-kmod, zfs), as of April 10th to 11th (CEST) 2015
-  (SRM-modules/4.5.2)
+- up-to-date ZFS SRM modules for SysRescCD 4.6.1 (spl, zfs-kmod, zfs), as of December 18th (CET) 2015
+  (SRM-modules/4.6.1)
 
 
 SRM-Modules
 -----------------------------------------------------------------------------------------------------------------------
 Info about the kernel modules:
 
-Toolchain was: Binutils 2.23.2, GCC Hardened 4.8.4 p1.3, pie-0.6.1 (very similar to SystemRescueCD)
+Toolchain was: Binutils 2.23.2, GCC Hardened 4.8.4 p1.3, pie-0.6.1 [vanilla] (very similar to SystemRescueCD)
 
 CFLAGS: -march=x86-64 -mtune=generic
 
@@ -40,14 +40,14 @@ CFLAGS: -march=x86-64 -mtune=generic
 HOWTO
 -----------------------------------------------------------------------------------------------------------------------
 
-- when using SystemRescueCD 4.5.2 on an USB stick - everything needed to do is
+- when using SystemRescueCD 4.6.1 on an USB stick - everything needed to do is
  
 - follow the instructions from http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick
 
 - have the usbstick mounted (mount -t vfat /dev/sdf1 /mnt/usbstick)
 
-- then copy over the zfs-core and zfs-kmod SRM files to the root of the usbstick(zfs-core-3.14.35-std452-amd64.srm, 
-  zfs-core-3.18.10-alt452-amd64.srm, zfs-kmod-3.14.35-std452-amd64.srm, zfs-kmod-3.18.10-alt452-amd64.srm)
+- then copy over the zfs-core and zfs-kmod SRM files to the root of the usbstick(zfs-core-3.14.56-std461-amd64.srm, 
+  zfs-core-4.1.12-alt461-amd64.srm, zfs-kmod-3.14.56-std461-amd64.srm, zfs-kmod-4.1.12-alt461-amd64.srm)
   
 - make sure that the usbstick is bootable, otherwise rewrite syslinux to the device (e.g. syslinux /dev/sdf1 && sync)
 
@@ -63,6 +63,24 @@ HOWTO
 
 - Enjoy !
 
+
+KERNEL BUILD
+-----------------------------------------------------------------------------------------------------------------------
+To avoid the '+' being appended to the kernel version string,
+(http://stackoverflow.com/questions/19333918/dont-add-to-linux-kernel-version)
+make sure you have, e.g.
+
+CONFIG_LOCALVERSION="-alt461-amd64"
+# CONFIG_LOCALVERSION_AUTO is not set
+
+set in the kernel config (.config),
+
+"EXTRAVERSION =" in Makefile (without the quotation marks),
+
+and (to be *really* sure), copy over the kernel directory and then delete the .git folder and .gitignore file - 
+so essentially rm -rf .git*
+
+Be sure to have backups of your git folder and know what you are doing otherwise you might LOSE ALL YOUR GIT DATA !
 
 
 LICENSES, COPYRIGHT
@@ -150,13 +168,13 @@ For more information/instructions check the USAGE file.
 
 SOURCES
 -----------------------------------------------------------------------------------------------------------------------
-Kernel sources (at least for 4.5.2) can be found at:
-https://github.com/kernelOfTruth/ZFS-for-SystemRescueCD/tree/linux-3.14.35-std452-amd64
-https://github.com/kernelOfTruth/ZFS-for-SystemRescueCD/tree/linux-3.18.10-alt452-amd64
+Kernel sources (at least for 4.6.1) can be found at:
+https://github.com/kernelOfTruth/linux/commits/linux-3.14.56-std461-amd64
+https://github.com/kernelOfTruth/linux/commits/linux-4.1.12-alt461-amd64
 
 Sources for SPL and ZFS can be found at (mirrored from the ZFS upstream repos):
-https://github.com/kernelOfTruth/zfs/tree/zfs_master_22.05.2015
-https://github.com/kernelOfTruth/spl/tree/spl_master_21.05.2015
+https://github.com/kernelOfTruth/zfs/commits/zfs_master_18.12.2015_sysresccd461
+https://github.com/kernelOfTruth/spl/commits/spl_master_18.12.2015
 
 
 CHANGES
