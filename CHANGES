@@ -1,3 +1,14 @@
+v13_nocona+
+(ZFS-for-SysRescCD-4.6.1_nocona+)
+----------------------------------------
+SPL & ZFS upgrade latest master (ZFS 18.02.2015, SPL 17.02.2015)
+kernel and modules built with x86_64-pc-linux-gnu-4.8.4 (hardened)
+CFLAGS and CXXFLAGS set to -march=nocona -mtune=generic
+binutils set to x86_64-pc-linux-gnu-2.26 and ld.bfd
+(2.23.2 would error out)
+
+updated CHECKSUMS and CHANGES file.
+
 v12
 ----------------------------------------
 upgrade to SystemRescueCD 4.6.1

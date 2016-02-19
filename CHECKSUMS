@@ -16,3 +16,14 @@ sha256sum *
 20cdd44e788762365cf3e9364c115727f0ee7e104dcce20a5e16ee2f0052a298  zfs-core-4.1.12-alt461-amd64.srm
 89d8b3221dd22c46811c9a3bac24f0b70f82a4bda8945611f47d25523191bda0  zfs-kmod-3.14.56-std461-amd64.srm
 202524df45a8cd3e030418668afe5054c28bdc5d49e0251298ca80adea616d30  zfs-kmod-4.1.12-alt461-amd64.srm
+
+-----------------------------------------------------------------------------------------------------------------------
+CHECKSUMS (nocona+)
+-----------------------------------------------------------------------------------------------------------------------
+md5sum *
+5d0d093c8df350014165bfa7acc7cffb  zfs-core-4.1.12-alt461-amd64.srm
+d562d140fb434d4529a266dd660ab431  zfs-kmod-4.1.12-alt461-amd64.srm
+
+sha256sum *
+0ea726cb0b68a2323870ec2a6b43227e00c04d64e3bbb2d6f1483902ec589024  zfs-core-4.1.12-alt461-amd64.srm
+70e8f449f867881f7e7d3aaafc91f56566fefd5c3b59675c89dcfac6e46fd458  zfs-kmod-4.1.12-alt461-amd64.srm
