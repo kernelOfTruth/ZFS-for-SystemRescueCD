@@ -1,3 +1,47 @@
+v13
+----------------------------------------
+upgrade to SystemRescueCD 4.9.0
+SPL & ZFS upgrade to 0.7.0-rc2 (November 4th 2016)
+(ZFS 04.11.2016, SPL 02.11.2016)
+ZFS contains one additional commit for allowing
+to set ZFS options prior to pool import
+
+-march=x86-64 -mtune=generic is used
+
+binutils 2.26.1 and gcc 4.8.5 (default hardened profile) was used
+
+ZFS is now capable of selecting much faster fletcher4 algorithms,
+an additional kernel module is now needed and loaded: icp
+
+updated CHECKSUMS and CHANGES file, added SIZES file.
+
+Added the modified generic.sh script from files/resources/generic.sh and
+hooks/zfs.sh
+of bliss-initramfs which includes the additional icp kernel module of ZFS
+
+Adding the ebuild message below for backwards compatibility:
+
+ * This version of ZFSOnLinux includes support for new feature flags
+ * that are incompatible with previous versions. GRUB2 support for
+ * /boot with the new feature flags is not yet available.
+ * Do *NOT* upgrade root pools to use the new feature flags.
+ * Any new pools will be created with the new feature flags by default
+ * and will not be compatible with older versions of ZFSOnLinux. To
+ * create a newpool that is backward compatible wih GRUB2, use 
+ * 
+ * zpool create -d -o feature@async_destroy=enabled 
+ * 	-o feature@empty_bpobj=enabled -o feature@lz4_compress=enabled
+ * 	-o feature@spacemap_histogram=enabled
+ * 	-o feature@enabled_txg=enabled 
+ * 	-o feature@extensible_dataset=enabled -o feature@bookmarks=enabled
+ * 	...
+ * 
+ * GRUB2 support will be updated as soon as either the GRUB2
+ * developers do a tag or the Gentoo developers find time to backport
+ * support from GRUB2 HEAD.
+
+
+
 v12
 ----------------------------------------
 upgrade to SystemRescueCD 4.6.1

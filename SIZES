@@ -1,0 +1,8 @@
+SIZES:
+-----------------------------------------------------------------------------------------------------------------------
+
+ls -l zfs-*
+-rw-r----- 1 root root 2740224 Nov  6 22:09 zfs-core-4.4.28-std490-amd64.srm
+-rw-r----- 1 root root 2740224 Nov  6 22:09 zfs-core-4.8.5-alt490-amd64.srm
+-rw-r----- 1 root root  729088 Nov  6 22:09 zfs-kmod-4.4.28-std490-amd64.srm
+-rw-r----- 1 root root  729088 Nov  6 22:09 zfs-kmod-4.8.5-alt490-amd64.srm

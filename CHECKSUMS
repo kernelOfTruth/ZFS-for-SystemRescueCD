@@ -2,17 +2,33 @@ CHECKSUMS:
 -----------------------------------------------------------------------------------------------------------------------
 md5sum:
 0f55e376c8b5092dbfddc4483efc890c  bliss-initramfs/1.8.1/bliss-initramfs-1.8.1.tar.gz
-md5sum *
-3042fcac90557a7fee7daf54b76655dd  zfs-core-3.14.56-std461-amd64.srm
-961bf13ea66342a13939a0a6f8cc3946  zfs-core-4.1.12-alt461-amd64.srm
-fb49e136cae378893ab66a836cda6c6f  zfs-kmod-3.14.56-std461-amd64.srm
-e5c2da52343806430a067e3bf9e3eb28  zfs-kmod-4.1.12-alt461-amd64.srm
+
+md5sum 
+bliss-initramfs/1.8.1/generic.sh c3fe0a269fe3407412f11ced3fcef083  bliss-initramfs/1.8.1/generic.sh
+
+md5sum
+bliss-initramfs/1.8.1/zfs.sh 
+2c84991f44a4b6523bd497ec94c309fd  bliss-initramfs/1.8.1/zfs.sh
+
+md5sum zfs-*
+b3e6250fbe5a2c2d525bf7c811bb4ae9  zfs-core-4.4.28-std490-amd64.srm
+02e72e1a81a018748121dee4e1a905a4  zfs-core-4.8.5-alt490-amd64.srm
+555ddc0145858746007c876cc575b08d  zfs-kmod-4.4.28-std490-amd64.srm
+c8eefed70bc1161b86b528c7ea26290b  zfs-kmod-4.8.5-alt490-amd64.srm
 
 
 sha256sum:
 91b9bf10631162ea346c806e6474e3fa4ee23193bcd23fa20efeb9c4796e0c12  bliss-initramfs/1.8.1/bliss-initramfs-1.8.1.tar.gz
-sha256sum *
-2d2af42a0cbf696a0f44d1d5e6e7752a6678a71d2c562be2cc56a6b9cf715977  zfs-core-3.14.56-std461-amd64.srm
-20cdd44e788762365cf3e9364c115727f0ee7e104dcce20a5e16ee2f0052a298  zfs-core-4.1.12-alt461-amd64.srm
-89d8b3221dd22c46811c9a3bac24f0b70f82a4bda8945611f47d25523191bda0  zfs-kmod-3.14.56-std461-amd64.srm
-202524df45a8cd3e030418668afe5054c28bdc5d49e0251298ca80adea616d30  zfs-kmod-4.1.12-alt461-amd64.srm
+
+sha256sum bliss-initramfs/1.8.1/generic.sh 
+1c97583f800188e4d8ac98186f43dff4cf1396666d3aebdc58713e868067c733  bliss-initramfs/1.8.1/generic.sh
+
+sha256sum
+bliss-initramfs/1.8.1/zfs.sh 
+5544b97ceff943f0741af994171319787fab3df4834c4cbe8193de763a5f04bc  bliss-initramfs/1.8.1/zfs.sh
+
+sha256sum zfs-*
+d2cbdeea036c52055019a6cb1aa19b4128d73c5df2132bc9fbc0602ff81e9cbb  zfs-core-4.4.28-std490-amd64.srm
+ea7ce47babf2c499dae46c3936d048c4d14fcc11d2eb37c001fa974cbc7c4e09  zfs-core-4.8.5-alt490-amd64.srm
+e0293c41eba245467ab50b34404b16b0c3c2ca73795924a2d14e6e44b4a4cf58  zfs-kmod-4.4.28-std490-amd64.srm
+4dd4f5b5545da9faf6b3ddf8f3711c3c6e27a8eca23b8ad722ea0b4367b25161  zfs-kmod-4.8.5-alt490-amd64.srm
